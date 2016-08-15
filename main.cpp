@@ -1,3 +1,4 @@
+﻿//#include "stdafx.h" //visual studio
 #include "KIK.h"
 
 int main(int argc, char* argv[])
@@ -7,7 +8,12 @@ int main(int argc, char* argv[])
 	char sign;
 	char tablica[3][3];
 	inicjalization(tablica);
-	cout << "Witaj w programi kolko i krzyrzyk" << endl;
+
+	HANDLE hOut;													// zmiana kolorkow
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::setw(75) << "=== Witaj w programie kolko i krzyzyk ===" << endl;
 	Sleep(2500);
 
 	draw(tablica); //rysowanie tablicy
@@ -17,14 +23,13 @@ int main(int argc, char* argv[])
 
 		start(tablica, i); //główne działenie gry
 		draw(tablica); //rysowanie tablicy
-		sign = check(tablica);//sprawdzenie czy ktoœ wygra³
+		sign = check(tablica);//sprawdzenie czy ktos wygral
 
-		if (checkThatWon(sign)) //sprawdzenie czy ktoœ wygra³ po odtrzymanym znaku
+		if (checkThatWon(sign)) //sprawdzenie czy ktos wygral po odtrzymanym znaku
 			break;
 	}
 
-
-    return 0;
+	system("pause");
+	return 0;
 }
-
 
